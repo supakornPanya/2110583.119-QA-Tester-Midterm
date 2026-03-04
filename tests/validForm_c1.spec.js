@@ -10,7 +10,7 @@ import {
   SelectSubject,
   SelectStateAndCity,
 } from "../utils/helperFill";
-import { CheckData } from "../utils/helperCheck";
+import { CheckSubmittedData } from "../utils/helperCheck";
 
 test("successfully submit form", async ({ page }) => {
   await page.goto("https://demoqa.com/automation-practice-form");
@@ -63,7 +63,7 @@ test("successfully submit form", async ({ page }) => {
   await page.getByRole("button", { name: "Submit" }).click();
 
   //* Verify the submitted data
-  await CheckData(
+  await CheckSubmittedData(
     page,
     FirstName,
     Lastname,

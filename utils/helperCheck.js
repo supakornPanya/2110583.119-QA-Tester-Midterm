@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
 
-export async function CheckData(
+export async function CheckSubmittedData(
   page,
   FirstName,
   Lastname,
@@ -15,7 +15,6 @@ export async function CheckData(
   State,
   City,
 ) {
-  const dateInput = page.locator("#dateOfBirthInput");
   await expect(
     page.getByRole("cell", { name: FirstName + " " + Lastname }),
   ).toBeVisible();
