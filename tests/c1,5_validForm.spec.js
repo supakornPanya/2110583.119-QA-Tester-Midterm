@@ -12,7 +12,7 @@ import {
 } from "../utils/helperFill";
 import { CheckSubmittedData } from "../utils/helperCheck";
 
-test("successfully submit form", async ({ page }) => {
+test("successfully submit form with mandatory fields", async ({ page }) => {
   await page.goto("https://demoqa.com/automation-practice-form");
 
   //* Fill First Name, Last Name, and Email
@@ -77,5 +77,43 @@ test("successfully submit form", async ({ page }) => {
     currentAddress,
     State,
     City,
+  );
+});
+
+test("successfully submit form with out mandatory fields", async ({ page }) => {
+  await page.goto("https://demoqa.com/automation-practice-form");
+
+  //* Fill First Name, Last Name, and Email
+  const [FirstName, Lastname, mail] = await InputNameEmail(
+    page,
+    "Firstname",
+    "Lastname",
+    "name@example.com",
+  );
+
+  //* Select Gender
+  const selectedGender = await SelectGender(page, "Female");
+
+  //* Fill Mobile Number
+  const mobileNumber = await InputMobileNumber(page, "0123456789");
+
+  //* Submit the form
+  await page.getByRole("button", { name: "Submit" }).click();
+
+  //* Verify the submitted data
+  await CheckSubmittedData(
+    page,
+    FirstName,
+    Lastname,
+    mail,
+    selectedGender,
+    mobileNumber,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
   );
 });
