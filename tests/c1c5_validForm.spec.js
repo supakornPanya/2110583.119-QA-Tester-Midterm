@@ -44,14 +44,17 @@ test("successfully submit form with mandatory fields (Criteria 1 & 5)", async ({
   await SelectSubject(page, subjects);
 
   //* Select Hobbies
-  const selectedHobbies = await SelectHobbies(page, ["Sports", "Music"]);
+  const selectedHobbies = ["Sports", "Music"];
+  await SelectHobbies(page, Hobbies);
 
   //* Upload Picture
   const filePath = "data/image.png";
+  // const filePath = "data/image.jpg";
   const uploadedFilePath = await UploadPicture(page, filePath);
 
   //* Fill Current Address
-  const currentAddress = await FillCurrentAddress(page, "123 Main Street");
+  const currentAddress = "123 Main Street";
+  await FillCurrentAddress(page, currentAddress);
 
   //* Select State and City
   const State = "NCR";
