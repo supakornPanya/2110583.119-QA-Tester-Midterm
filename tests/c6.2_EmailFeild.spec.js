@@ -1,68 +1,45 @@
 import { test, expect } from "@playwright/test";
-import {
-  InputNameEmail,
-  SelectGender,
-  InputMobileNumber,
-  SelectHobbies,
-  UploadPicture,
-  FillCurrentAddress,
-  SelectDateOfBirth,
-  SelectSubject,
-  SelectStateAndCity,
-} from "../utils/helperFill";
+import { FullTestEmail } from "../utils/helperEmail";
 
-test("Email Field not contain @ symbol.", async ({ page }) => {
-  await page.goto("https://demoqa.com/automation-practice-form");
+const testDataEmail = [
+  "nameexample.com", // Email Without '@' Symbol
+  "nameName@domain", // Email Without Domain Extension
+  "nameName@domain!.com", // Email With Invalid Characters
+  "nameName@@example.com", // Email With Multiple '@' Symbols
+  "nameName@example.c", // Email With Invalid Domain Extension
+  " nameName@example.com ", // Email With Leading or Trailing Spaces
+  "@example.com", // Email With Missing Username
+  "nameName@.com", // Email With Missing Domain Name
+];
 
-  //! Fill First Name, Last Name, and Email
-  const [FirstName, Lastname, mail] = await InputNameEmail(
-    page,
-    "Firstname",
-    "Lastname",
-    "nameNameexample.com",
-  );
+test("Email Field with out @ symbol. (Criteria 6.2)", async ({ page }) => {
+  await FullTestEmail(page, testDataEmail[0]);
+});
 
-  //* Select Gender
-  const selectedGender = await SelectGender(page, "Female");
+test("Email Field not contain domain extension.(Criteria 6.2)", async ({ page }) => {
+  await FullTestEmail(page, testDataEmail[1]);
+});
 
-  //* Fill Mobile Number
-  const mobileNumber = await InputMobileNumber(page, "0123456789");
+test("Email Field contain invalid characters.(Criteria 6.2)", async ({ page }) => {
+  await FullTestEmail(page, testDataEmail[2]);
+});
 
-  //* Select Date of Birth
-  const expectedDate = "01 March,2026";
-  // await SelectDateOfBirth(page, "", "click");
-  const selectedDateOfBirthFill = "01 Mar 2026";
-  await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
+test("Email Field contain multiple @ symbols.(Criteria 6.2)", async ({ page }) => {
+  await FullTestEmail(page, testDataEmail[3]);
+});
 
-  //* Fill Subjects
-  // SubjectName:
-  // Maths, Accounting, Arts, Social Studies,
-  // English, Chemistry, Computer Science, Comerce,
-  // Economics, Social Studies, Hindi,
-  // Physics, Biology, History, Civics
-  const subjects = ["Maths", "Civics"];
-  await SelectSubject(page, subjects);
+test("Email Field contain invalid domain extension.(Criteria 6.2)", async ({ page }) => {
+  await FullTestEmail(page, testDataEmail[4]);
+});
 
-  //* Select Hobbies
-  const selectedHobbies = await SelectHobbies(page, ["Sports", "Music"]);
+test("Email Field contain leading or trailing spaces.(Criteria 6.2)", async ({ page }) => {
+  await FullTestEmail(page, testDataEmail[5]);
+});
 
-  //* Upload Picture
-  const filePath = "data/image.png";
-  const uploadedFilePath = await UploadPicture(page, filePath);
+test("Email Field contain missing username.(Criteria 6.2)", async ({ page }) => {
+  await FullTestEmail(page, testDataEmail[6]);
+});
 
-  //* Fill Current Address
-  const currentAddress = await FillCurrentAddress(page, "123 Main Street");
-
-  //* Select State and City
-  const State = "NCR";
-  const City = "Delhi";
-  await SelectStateAndCity(page, State, City);
-
-  //* Submit the form
-  await page.getByRole("button", { name: "Submit" }).click();
-
-  //* Verify the submitted data
-  await expect(
-    page.getByText("Thanks for submitting the form"),
-  ).not.toBeVisible();
+test("Email Field contain missing domain name.(Criteria 6.2)", async ({ page }) => {
+  await FullTestEmail(page, testDataEmail[7]);
 });

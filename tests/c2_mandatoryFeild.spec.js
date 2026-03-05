@@ -11,7 +11,7 @@ import {
   SelectStateAndCity,
 } from "../utils/helperFill";
 
-test("mandatory First Name", async ({
+test("mandatory First Name (Criteria 2)", async ({
   page,
 }) => {
   await page.goto("https://demoqa.com/automation-practice-form");
@@ -31,10 +31,9 @@ test("mandatory First Name", async ({
   const mobileNumber = await InputMobileNumber(page, "0123456789");
 
   //* Select Date of Birth
-  const expectedDate = "01 March,2026";
-  // await SelectDateOfBirth(page, "", "click");
-  const selectedDateOfBirthFill = "01 Mar 2026";
-  await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
+  const selectedDateOfBirthFill = "01 August,2020";
+  await SelectDateOfBirth(page, selectedDateOfBirthFill, "click");
+  // await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
 
   //* Fill Subjects
   // SubjectName:
@@ -69,7 +68,7 @@ test("mandatory First Name", async ({
   ).not.toBeVisible();
 });
 
-test("mandatory Last Name", async ({ page }) => {
+test("mandatory Last Name (Criteria 2)", async ({ page }) => {
   await page.goto("https://demoqa.com/automation-practice-form");
 
   //* Fill First Name, Last Name, and Email
@@ -87,10 +86,9 @@ test("mandatory Last Name", async ({ page }) => {
   const mobileNumber = await InputMobileNumber(page, "0123456789");
 
   //* Select Date of Birth
-  const expectedDate = "01 March,2026";
-  // await SelectDateOfBirth(page, "", "click");
-  const selectedDateOfBirthFill = "01 Mar 2026";
-  await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
+  const selectedDateOfBirthFill = "01 August,2020";
+  await SelectDateOfBirth(page, selectedDateOfBirthFill, "click");
+  // await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
 
   //* Fill Subjects
   // SubjectName:
@@ -125,7 +123,7 @@ test("mandatory Last Name", async ({ page }) => {
   ).not.toBeVisible();
 });
 
-test("mandatory Gender", async ({ page }) => {
+test("mandatory Gender (Criteria 2)", async ({ page }) => {
   await page.goto("https://demoqa.com/automation-practice-form");
 
   //* Fill First Name, Last Name, and Email
@@ -143,10 +141,9 @@ test("mandatory Gender", async ({ page }) => {
   const mobileNumber = await InputMobileNumber(page, "0123456789");
 
   //* Select Date of Birth
-  const expectedDate = "01 March,2026";
-  // await SelectDateOfBirth(page, "", "click");
-  const selectedDateOfBirthFill = "01 Mar 2026";
-  await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
+  const selectedDateOfBirthFill = "01 August,2020";
+  await SelectDateOfBirth(page, selectedDateOfBirthFill, "click");
+  // await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
 
   //* Fill Subjects
   // SubjectName:
@@ -181,7 +178,7 @@ test("mandatory Gender", async ({ page }) => {
   ).not.toBeVisible();
 });
 
-test("mandatory Mobile", async ({ page }) => {
+test("mandatory Mobile (Criteria 2)", async ({ page }) => {
   await page.goto("https://demoqa.com/automation-practice-form");
 
   //* Fill First Name, Last Name, and Email
@@ -199,10 +196,9 @@ test("mandatory Mobile", async ({ page }) => {
   const mobileNumber = await InputMobileNumber(page, null);
 
   //* Select Date of Birth
-  const expectedDate = "01 March,2026";
-  // await SelectDateOfBirth(page, "", "click");
-  const selectedDateOfBirthFill = "01 Mar 2026";
-  await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
+  const selectedDateOfBirthFill = "01 August,2020";
+  await SelectDateOfBirth(page, selectedDateOfBirthFill, "click");
+  // await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
 
   //* Fill Subjects
   // SubjectName:

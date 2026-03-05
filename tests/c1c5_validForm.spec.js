@@ -12,7 +12,7 @@ import {
 } from "../utils/helperFill";
 import { CheckSubmittedData } from "../utils/helperCheck";
 
-test("successfully submit form with mandatory fields", async ({ page }) => {
+test("successfully submit form with mandatory fields (Criteria 1 & 5)", async ({ page }) => {
   await page.goto("https://demoqa.com/automation-practice-form");
 
   //* Fill First Name, Last Name, and Email
@@ -30,10 +30,9 @@ test("successfully submit form with mandatory fields", async ({ page }) => {
   const mobileNumber = await InputMobileNumber(page, "0123456789");
 
   //* Select Date of Birth
-  const expectedDate = "01 March,2026";
-  // await SelectDateOfBirth(page, "", "click");
-  const selectedDateOfBirthFill = "01 Mar 2026";
-  await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
+  const selectedDateOfBirthFill = "01 August,2020";
+  await SelectDateOfBirth(page, selectedDateOfBirthFill, "click");
+  // await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
 
   //* Fill Subjects
     // SubjectName:
@@ -70,7 +69,7 @@ test("successfully submit form with mandatory fields", async ({ page }) => {
     mail,
     selectedGender,
     mobileNumber,
-    expectedDate,
+    selectedDateOfBirthFill,
     subjects,
     selectedHobbies,
     uploadedFilePath,
@@ -80,7 +79,7 @@ test("successfully submit form with mandatory fields", async ({ page }) => {
   );
 });
 
-test("successfully submit form with out mandatory fields", async ({ page }) => {
+test("successfully submit form with out mandatory fields (Criteria 1 & 5)", async ({ page }) => {
   await page.goto("https://demoqa.com/automation-practice-form");
 
   //* Fill First Name, Last Name, and Email

@@ -1,32 +1,40 @@
 import { test, expect } from "@playwright/test";
 import {
-  InputNameEmail,
-  SelectGender,
-  InputMobileNumber,
-  SelectHobbies,
-  UploadPicture,
-  FillCurrentAddress,
-  SelectDateOfBirth,
   SelectSubject,
   SelectStateAndCity,
-  CheckCity,
 } from "../utils/helperFill";
 
-test("If change City then State should also change (Criteria 3)", async ({ page }) => {
+test("If change State then City should also change (Criteria 3)", async ({ page }) => {
   await page.goto("https://demoqa.com/automation-practice-form");
 
   // just select State
   const State = "NCR";
   await SelectStateAndCity(page, State, null);
-  const Cities = ["Delhi", "Gurgaon", "Noida"];
 
-  // check if all Cities are visible
+  // check if all Cities are in NCR are visible
+  const Cities = ["Delhi", "Gurgaon", "Noida"];
   await page
     .locator("div")
     .filter({ hasText: /^Select City$/ })
     .nth(3)
     .click();
   for (const City of Cities) {
+    await expect(page.getByRole("option", { name: City })).toBeVisible();
+  }
+
+  // change State
+  const newState = "Uttar Pradesh";
+  await page.locator("div").filter({ hasText: /^NCR$/ }).nth(1).click();
+  await page.getByRole("option", { name: "Uttar Pradesh" }).click();
+
+  // check if all Cities are in Uttar Pradesh are visible
+  await page
+    .locator("div")
+    .filter({ hasText: /^Select City$/ })
+    .nth(3)
+    .click();
+  const newCities = ["Agra", "Lucknow", "Merrut"];
+  for (const City of newCities) {
     await expect(page.getByRole("option", { name: City })).toBeVisible();
   }
 });
@@ -52,7 +60,9 @@ test("Subjects allows multiple entries and displays them as removable tags (Crit
   await expect(
     page.getByRole("button", { name: "Remove Civics" }),
   ).toBeVisible();
-  await expect(page.getByText("Computer Science")).toBeVisible();
+  await expect(
+    page.getByText("Computer Science", { exact: true }),
+  ).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Remove Computer Science" }),
   ).toBeVisible();
