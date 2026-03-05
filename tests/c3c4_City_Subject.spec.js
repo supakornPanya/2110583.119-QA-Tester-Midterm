@@ -7,7 +7,7 @@ import {
 test("If change State then City should also change (Criteria 3)", async ({ page }) => {
   await page.goto("https://demoqa.com/automation-practice-form");
 
-  // just select State
+  // select State
   const State = "NCR";
   await SelectStateAndCity(page, State, null);
 
@@ -39,7 +39,7 @@ test("If change State then City should also change (Criteria 3)", async ({ page 
   }
 });
 
-test("Subjects allows multiple entries and displays them as removable tags (Criteria 4)", async ({ page }) => {
+test("Subjects allows multiple entries (Criteria 4)", async ({ page }) => {
   await page.goto("https://demoqa.com/automation-practice-form");
 
   //* Fill Subjects
@@ -53,15 +53,32 @@ test("Subjects allows multiple entries and displays them as removable tags (Crit
 
   // Verify that each selected subject is displayed as a removable tag
   await expect(page.getByText("Maths")).toBeVisible();
+  await expect(page.getByText("Civics")).toBeVisible();
+  await expect(
+    page.getByText("Computer Science", { exact: true }),
+  ).toBeVisible();
+});
+
+test("Subjects allows multiple entries and displays them as removable tags (Criteria 4)", async ({
+  page,
+}) => {
+  await page.goto("https://demoqa.com/automation-practice-form");
+
+  //* Fill Subjects
+  // SubjectName:
+  // Maths, Accounting, Arts, Social Studies,
+  // English, Chemistry, Computer Science, Comerce,
+  // Economics, Social Studies, Hindi,
+  // Physics, Biology, History, Civics
+  const subjects = ["Maths", "Civics", "Computer Science"];
+  await SelectSubject(page, subjects);
+
+  // Verify that each selected subject is displayed as a removable tag
   await expect(
     page.getByRole("button", { name: "Remove Maths" }),
   ).toBeVisible();
-  await expect(page.getByText("Civics")).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Remove Civics" }),
-  ).toBeVisible();
-  await expect(
-    page.getByText("Computer Science", { exact: true }),
   ).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Remove Computer Science" }),

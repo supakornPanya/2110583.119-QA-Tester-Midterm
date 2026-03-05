@@ -30,35 +30,6 @@ test("mandatory First Name (Criteria 2)", async ({
   //* Fill Mobile Number
   const mobileNumber = await InputMobileNumber(page, "0123456789");
 
-  //* Select Date of Birth
-  const selectedDateOfBirthFill = "01 August,2020";
-  await SelectDateOfBirth(page, selectedDateOfBirthFill, "click");
-  // await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
-
-  //* Fill Subjects
-  // SubjectName:
-  // Maths, Accounting, Arts, Social Studies,
-  // English, Chemistry, Computer Science, Comerce,
-  // Economics, Social Studies, Hindi,
-  // Physics, Biology, History, Civics
-  const subjects = ["Maths", "Civics"];
-  await SelectSubject(page, subjects);
-
-  //* Select Hobbies
-  const selectedHobbies = await SelectHobbies(page, ["Sports", "Music"]);
-
-  //* Upload Picture
-  const filePath = "data/image.png";
-  const uploadedFilePath = await UploadPicture(page, filePath);
-
-  //* Fill Current Address
-  const currentAddress = await FillCurrentAddress(page, "123 Main Street");
-
-  //* Select State and City
-  const State = "NCR";
-  const City = "Delhi";
-  await SelectStateAndCity(page, State, City);
-
   //* Submit the form
   await page.getByRole("button", { name: "Submit" }).click();
 
@@ -84,35 +55,6 @@ test("mandatory Last Name (Criteria 2)", async ({ page }) => {
 
   //* Fill Mobile Number
   const mobileNumber = await InputMobileNumber(page, "0123456789");
-
-  //* Select Date of Birth
-  const selectedDateOfBirthFill = "01 August,2020";
-  await SelectDateOfBirth(page, selectedDateOfBirthFill, "click");
-  // await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
-
-  //* Fill Subjects
-  // SubjectName:
-  // Maths, Accounting, Arts, Social Studies,
-  // English, Chemistry, Computer Science, Comerce,
-  // Economics, Social Studies, Hindi,
-  // Physics, Biology, History, Civics
-  const subjects = ["Maths", "Civics"];
-  await SelectSubject(page, subjects);
-
-  //* Select Hobbies
-  const selectedHobbies = await SelectHobbies(page, ["Sports", "Music"]);
-
-  //* Upload Picture
-  const filePath = "data/image.png";
-  const uploadedFilePath = await UploadPicture(page, filePath);
-
-  //* Fill Current Address
-  const currentAddress = await FillCurrentAddress(page, "123 Main Street");
-
-  //* Select State and City
-  const State = "NCR";
-  const City = "Delhi";
-  await SelectStateAndCity(page, State, City);
 
   //* Submit the form
   await page.getByRole("button", { name: "Submit" }).click();
@@ -140,35 +82,6 @@ test("mandatory Gender (Criteria 2)", async ({ page }) => {
   //* Fill Mobile Number
   const mobileNumber = await InputMobileNumber(page, "0123456789");
 
-  //* Select Date of Birth
-  const selectedDateOfBirthFill = "01 August,2020";
-  await SelectDateOfBirth(page, selectedDateOfBirthFill, "click");
-  // await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
-
-  //* Fill Subjects
-  // SubjectName:
-  // Maths, Accounting, Arts, Social Studies,
-  // English, Chemistry, Computer Science, Comerce,
-  // Economics, Social Studies, Hindi,
-  // Physics, Biology, History, Civics
-  const subjects = ["Maths", "Civics"];
-  await SelectSubject(page, subjects);
-
-  //* Select Hobbies
-  const selectedHobbies = await SelectHobbies(page, ["Sports", "Music"]);
-
-  //* Upload Picture
-  const filePath = "data/image.png";
-  const uploadedFilePath = await UploadPicture(page, filePath);
-
-  //* Fill Current Address
-  const currentAddress = await FillCurrentAddress(page, "123 Main Street");
-
-  //* Select State and City
-  const State = "NCR";
-  const City = "Delhi";
-  await SelectStateAndCity(page, State, City);
-
   //* Submit the form
   await page.getByRole("button", { name: "Submit" }).click();
 
@@ -193,36 +106,7 @@ test("mandatory Mobile (Criteria 2)", async ({ page }) => {
   const selectedGender = await SelectGender(page, "Female");
 
   //* Fill Mobile Number
-  const mobileNumber = await InputMobileNumber(page, null);
-
-  //* Select Date of Birth
-  const selectedDateOfBirthFill = "01 August,2020";
-  await SelectDateOfBirth(page, selectedDateOfBirthFill, "click");
-  // await SelectDateOfBirth(page, selectedDateOfBirthFill, "fill");
-
-  //* Fill Subjects
-  // SubjectName:
-  // Maths, Accounting, Arts, Social Studies,
-  // English, Chemistry, Computer Science, Comerce,
-  // Economics, Social Studies, Hindi,
-  // Physics, Biology, History, Civics
-  const subjects = ["Maths", "Civics"];
-  await SelectSubject(page, subjects);
-
-  //* Select Hobbies
-  const selectedHobbies = await SelectHobbies(page, ["Sports", "Music"]);
-
-  //* Upload Picture
-  const filePath = "data/image.png";
-  const uploadedFilePath = await UploadPicture(page, filePath);
-
-  //* Fill Current Address
-  const currentAddress = await FillCurrentAddress(page, "123 Main Street");
-
-  //* Select State and City
-  const State = "NCR";
-  const City = "Delhi";
-  await SelectStateAndCity(page, State, City);
+  const mobileNumber = await InputMobileNumber(page, null); 
 
   //* Submit the form
   await page.getByRole("button", { name: "Submit" }).click();
